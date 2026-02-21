@@ -1,0 +1,694 @@
+{
+  "version": "v1-draft",
+  "count": 86,
+  "opcodes": [
+    {
+      "opcode": "0x0001",
+      "name": "PRINT",
+      "capability": "IO",
+      "syscall": "write",
+      "deterministic": 0,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x0002",
+      "name": "READ",
+      "capability": "IO",
+      "syscall": "read",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0003",
+      "name": "EXIT",
+      "capability": "NONE",
+      "syscall": "exit",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0004",
+      "name": "NOP",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x0005",
+      "name": "ASSERT_EQ",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x0006",
+      "name": "ASSERT_NE",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x0007",
+      "name": "PANIC",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0008",
+      "name": "TRACE_EMIT",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0009",
+      "name": "HALT",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000A",
+      "name": "YIELD",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "sched_yield",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000B",
+      "name": "GETPID",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "getpid",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000C",
+      "name": "GETPPID",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "getppid",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000D",
+      "name": "SETPRIO",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "setpriority",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000E",
+      "name": "GETPRIO",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "getpriority",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x000F",
+      "name": "KILL",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "kill",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0010",
+      "name": "OPEN",
+      "capability": "FILESYSTEM",
+      "syscall": "openat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0011",
+      "name": "CLOSE",
+      "capability": "FILESYSTEM",
+      "syscall": "close",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0012",
+      "name": "READ_FILE",
+      "capability": "FILESYSTEM",
+      "syscall": "read",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0013",
+      "name": "WRITE_FILE",
+      "capability": "FILESYSTEM",
+      "syscall": "write",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0014",
+      "name": "LSEEK",
+      "capability": "FILESYSTEM",
+      "syscall": "lseek",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0015",
+      "name": "STAT",
+      "capability": "FILESYSTEM",
+      "syscall": "newfstatat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0016",
+      "name": "FSTAT",
+      "capability": "FILESYSTEM",
+      "syscall": "fstat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0017",
+      "name": "MKDIR",
+      "capability": "FILESYSTEM",
+      "syscall": "mkdirat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0018",
+      "name": "RMDIR",
+      "capability": "FILESYSTEM",
+      "syscall": "unlinkat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0019",
+      "name": "RENAME",
+      "capability": "FILESYSTEM",
+      "syscall": "renameat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x001A",
+      "name": "CHMOD",
+      "capability": "FILESYSTEM",
+      "syscall": "fchmod",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x001E",
+      "name": "READLINK",
+      "capability": "FILESYSTEM",
+      "syscall": "readlinkat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x001F",
+      "name": "TRUNCATE",
+      "capability": "FILESYSTEM",
+      "syscall": "ftruncate",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0020",
+      "name": "SYNC",
+      "capability": "FILESYSTEM",
+      "syscall": "sync",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0030",
+      "name": "MMAP",
+      "capability": "MEMORY_MAP",
+      "syscall": "mmap",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0031",
+      "name": "MUNMAP",
+      "capability": "MEMORY_MAP",
+      "syscall": "munmap",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0032",
+      "name": "MPROTECT",
+      "capability": "MEMORY_MAP",
+      "syscall": "mprotect",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0036",
+      "name": "MUNLOCK",
+      "capability": "MEMORY_MAP",
+      "syscall": "munlock",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0037",
+      "name": "MEMCPY",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0038",
+      "name": "MEMSET",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0039",
+      "name": "MEMCMP",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x003A",
+      "name": "SHA256",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x003B",
+      "name": "BLAKE3",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": true
+    },
+    {
+      "opcode": "0x003C",
+      "name": "CRC32",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x003D",
+      "name": "RANDOM",
+      "capability": "RANDOM",
+      "syscall": "getrandom",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x003E",
+      "name": "GETRANDOM",
+      "capability": "RANDOM",
+      "syscall": "getrandom",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x003F",
+      "name": "CLEAR_CACHE",
+      "capability": "NONE",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0040",
+      "name": "SOCKET",
+      "capability": "NETWORK",
+      "syscall": "socket",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0041",
+      "name": "BIND",
+      "capability": "NETWORK",
+      "syscall": "bind",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0042",
+      "name": "LISTEN",
+      "capability": "NETWORK",
+      "syscall": "listen",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0043",
+      "name": "ACCEPT",
+      "capability": "NETWORK",
+      "syscall": "accept",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0044",
+      "name": "CONNECT",
+      "capability": "NETWORK",
+      "syscall": "connect",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0045",
+      "name": "SEND",
+      "capability": "NETWORK",
+      "syscall": "sendto",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0046",
+      "name": "RECV",
+      "capability": "NETWORK",
+      "syscall": "recvfrom",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0047",
+      "name": "SENDMSG",
+      "capability": "NETWORK",
+      "syscall": "sendmsg",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0048",
+      "name": "RECVMSG",
+      "capability": "NETWORK",
+      "syscall": "recvmsg",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0049",
+      "name": "SHUTDOWN",
+      "capability": "NETWORK",
+      "syscall": "shutdown",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004A",
+      "name": "SETSOCKOPT",
+      "capability": "NETWORK",
+      "syscall": "setsockopt",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004B",
+      "name": "GETSOCKOPT",
+      "capability": "NETWORK",
+      "syscall": "getsockopt",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004C",
+      "name": "POLL",
+      "capability": "NETWORK",
+      "syscall": "poll",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004D",
+      "name": "EPOLL_CREATE",
+      "capability": "NETWORK",
+      "syscall": "epoll_create1",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004E",
+      "name": "EPOLL_CTL",
+      "capability": "NETWORK",
+      "syscall": "epoll_ctl",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x004F",
+      "name": "EPOLL_WAIT",
+      "capability": "NETWORK",
+      "syscall": "epoll_wait",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0050",
+      "name": "GETADDRINFO",
+      "capability": "NETWORK",
+      "syscall": "",
+      "deterministic": 1,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0060",
+      "name": "CLONE",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "clone",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0061",
+      "name": "WAIT",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "wait4",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0062",
+      "name": "EXEC",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "execve",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0063",
+      "name": "SETUID",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "setuid",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0064",
+      "name": "SETGID",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "setgid",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0065",
+      "name": "SETNS",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "setns",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0066",
+      "name": "UNAME",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "uname",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0067",
+      "name": "PRCTL",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "prctl",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0068",
+      "name": "SCHED_SET",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "sched_setscheduler",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0069",
+      "name": "SCHED_GET",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "sched_getscheduler",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006A",
+      "name": "FUTEX_WAIT",
+      "capability": "THREAD_SYNC",
+      "syscall": "futex",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006B",
+      "name": "FUTEX_WAKE",
+      "capability": "THREAD_SYNC",
+      "syscall": "futex",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006C",
+      "name": "SIGNAL",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "rt_sigaction",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006D",
+      "name": "SIGPROCMASK",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "rt_sigprocmask",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006E",
+      "name": "GETRLIMIT",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "getrlimit",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x006F",
+      "name": "SETRLIMIT",
+      "capability": "PROCESS_SPAWN",
+      "syscall": "setrlimit",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0070",
+      "name": "GETTIME",
+      "capability": "TIME",
+      "syscall": "clock_gettime",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0071",
+      "name": "SETTIME",
+      "capability": "TIME",
+      "syscall": "clock_settime",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0072",
+      "name": "NANOSLEEP",
+      "capability": "TIME",
+      "syscall": "nanosleep",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0073",
+      "name": "TIMER_CREATE",
+      "capability": "TIME",
+      "syscall": "timer_create",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0074",
+      "name": "TIMER_SET",
+      "capability": "TIME",
+      "syscall": "timer_settime",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0075",
+      "name": "TIMER_DELETE",
+      "capability": "TIME",
+      "syscall": "timer_delete",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0080",
+      "name": "PIPE",
+      "capability": "IPC",
+      "syscall": "pipe2",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0081",
+      "name": "SHMGET",
+      "capability": "IPC",
+      "syscall": "shmget",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0082",
+      "name": "SHMAT",
+      "capability": "IPC",
+      "syscall": "shmat",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0083",
+      "name": "SHMDT",
+      "capability": "IPC",
+      "syscall": "shmdt",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    },
+    {
+      "opcode": "0x0084",
+      "name": "MSGGET",
+      "capability": "IPC",
+      "syscall": "msgget",
+      "deterministic": 0,
+      "ebpf_allowed": false
+    }
+  ]
+}
